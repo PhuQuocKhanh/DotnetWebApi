@@ -1,0 +1,52 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "MyFirstWebAPIProject (http)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/MyFirstWebAPIProject/bin/Debug/net8.0/MyFirstWebAPIProject.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/MyFirstWebAPIProject",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5028"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "http://localhost:5028/swagger"
+            }
+        },
+        {
+            "name": "MyFirstWebAPIProject (https)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/MyFirstWebAPIProject/bin/Debug/net8.0/MyFirstWebAPIProject.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/MyFirstWebAPIProject",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "https://localhost:7172;http://localhost:5028"
+            },
+            "launchBrowser": {
+                "enabled": true,
+                "args": "https://localhost:7172/swagger"
+            }
+        }
+    ]
+}
