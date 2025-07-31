@@ -1,0 +1,6 @@
+@AutoMapperConditional_HostAddress = http://localhost:5138
+
+GET {{AutoMapperConditional_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,11 @@
+-- What Is a Complex Type? --
+- Complex Type (kiểu phức tạp) là một lớp hoặc đối tượng bao gồm nhiều thuộc tính, trong đó mỗi thuộc tính có thể là kiểu nguyên thủy hoặc cũng là một kiểu phức tạp. 
+- Ví dụ, một lớp Address với các thuộc tính như Street, City, State, và ZipCode được xem là Complex Type — vì nó đóng gói nhiều thông tin liên quan thành một đơn vị duy nhất.
+-- What are Primitive Types? -- 
+- Primitive Types (kiểu nguyên thủy) là các kiểu dữ liệu cơ bản như int, string, bool, double,... 
+- Chúng chỉ lưu trữ một giá trị đơn giản và không có thuộc tính con. 
+- Những kiểu này thường được dùng để biểu diễn các giá trị cơ bản như số, chuỗi văn bản hoặc điều kiện Boolean.
+-- Why Map Complex to Primitive (and vice versa)? --
+- Trong thực tế phát triển ứng dụng, các Entity thường chứa các đối tượng lồng nhau (tức là Complex Type). 
+- Tuy nhiên, khi dữ liệu được trả ra hoặc nhận vào thông qua API (thông qua các DTO), chúng ta thường cần làm phẳng các kiểu phức tạp đó thành các thuộc tính riêng lẻ, đơn giản (kiểu nguyên thủy). 
+- Ngược lại, khi nhận dữ liệu đầu vào từ người dùng dưới dạng các trường riêng lẻ, chúng ta cần gom lại thành một đối tượng phức tạp để lưu xuống cơ sở dữ liệu.

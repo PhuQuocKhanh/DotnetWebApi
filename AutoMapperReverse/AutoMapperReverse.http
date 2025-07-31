@@ -1,0 +1,6 @@
+@AutoMapperReverse_HostAddress = http://localhost:5075
+
+GET {{AutoMapperReverse_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
