@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomapperNullSubstitute", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTPMethods", "HTTPMethods\HTTPMethods.csproj", "{BE6029A5-89B8-4068-BFDC-99E259050315}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingDemo", "LoggingDemo\LoggingDemo.csproj", "{9F7D0C42-62A9-4D65-95E3-497393E347A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLoggingProvider", "CustomLoggingProvider\CustomLoggingProvider.csproj", "{E8165611-0B8F-468C-A89D-E4B117367B29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplementSerilog", "ImplementSerilog\ImplementSerilog.csproj", "{6E352896-B350-46A5-8611-B4235B8E7846}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +78,21 @@ Global
 		{BE6029A5-89B8-4068-BFDC-99E259050315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE6029A5-89B8-4068-BFDC-99E259050315}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE6029A5-89B8-4068-BFDC-99E259050315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F300B7D8-23FB-4748-90C8-FEBA180166A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F300B7D8-23FB-4748-90C8-FEBA180166A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F300B7D8-23FB-4748-90C8-FEBA180166A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F300B7D8-23FB-4748-90C8-FEBA180166A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F7D0C42-62A9-4D65-95E3-497393E347A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F7D0C42-62A9-4D65-95E3-497393E347A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F7D0C42-62A9-4D65-95E3-497393E347A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F7D0C42-62A9-4D65-95E3-497393E347A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8165611-0B8F-468C-A89D-E4B117367B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8165611-0B8F-468C-A89D-E4B117367B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8165611-0B8F-468C-A89D-E4B117367B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8165611-0B8F-468C-A89D-E4B117367B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E352896-B350-46A5-8611-B4235B8E7846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E352896-B350-46A5-8611-B4235B8E7846}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E352896-B350-46A5-8611-B4235B8E7846}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E352896-B350-46A5-8611-B4235B8E7846}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

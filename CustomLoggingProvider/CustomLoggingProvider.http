@@ -1,0 +1,6 @@
+@CustomLoggingProvider_HostAddress = http://localhost:5207
+
+GET {{CustomLoggingProvider_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
