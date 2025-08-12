@@ -1,0 +1,6 @@
+@NLogToDatabase_HostAddress = http://localhost:5080
+
+GET {{NLogToDatabase_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

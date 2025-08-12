@@ -1,0 +1,26 @@
+2025-08-11 20:51:46.0159 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:10:51.4550 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:11:18.4567 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:11:31.5736 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:32:07.5190 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:32:13.8783 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:32:16.3910 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:45:14.0500 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:45:43.9925 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:46:35.3428 Error Failed loading NLog configuration. Invalid XML document. Cannot parse attribute-name with white-space - Cannot parse attributes for Start-tag: target - Start-tag: target - Line: 15  FilePath: /Users/macbook/Documents/Github/DotnetWebApi/NLogToDatabase/nlog.config Exception: NLog.NLogConfigurationException: Failed loading NLog configuration. Invalid XML document. Cannot parse attribute-name with white-space - Cannot parse attributes for Start-tag: target - Start-tag: target - Line: 15  FilePath: /Users/macbook/Documents/Github/DotnetWebApi/NLogToDatabase/nlog.config
+ ---> NLog.Config.XmlParserException: Invalid XML document. Cannot parse attribute-name with white-space - Cannot parse attributes for Start-tag: target - Start-tag: target - Line: 15
+   at NLog.Internal.XmlParser.LoadDocument(IList`1& processingInstructions)
+   at NLog.Config.XmlLoggingConfiguration.ParseFromTextReader(TextReader textReader, String filePath)
+   --- End of inner exception stack trace ---
+2025-08-11 21:46:35.3441 Warn AutoReload Config File Monitor failed to reload NLog LoggingConfiguration. Exception: NLog.NLogConfigurationException: Failed loading NLog configuration. Invalid XML document. Cannot parse attribute-name with white-space - Cannot parse attributes for Start-tag: target - Start-tag: target - Line: 15  FilePath: /Users/macbook/Documents/Github/DotnetWebApi/NLogToDatabase/nlog.config
+ ---> NLog.Config.XmlParserException: Invalid XML document. Cannot parse attribute-name with white-space - Cannot parse attributes for Start-tag: target - Start-tag: target - Line: 15
+   at NLog.Internal.XmlParser.LoadDocument(IList`1& processingInstructions)
+   at NLog.Config.XmlLoggingConfiguration.ParseFromTextReader(TextReader textReader, String filePath)
+   --- End of inner exception stack trace ---
+   at NLog.Config.XmlLoggingConfiguration.ParseFromTextReader(TextReader textReader, String filePath)
+   at NLog.Config.XmlLoggingConfiguration.LoadFromXmlFile(String filePath)
+   at NLog.Config.XmlLoggingConfiguration.Reload()
+   at NLog.Config.XmlLoggingConfiguration.AutoReloadConfigFileWatcher.ReloadTimer(Object state)
+2025-08-11 21:47:00.2092 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:47:01.7088 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper
+2025-08-11 21:47:04.3408 Warn Unused target detected. Add a rule for this target to the configuration. TargetName: asyncFileWrapper

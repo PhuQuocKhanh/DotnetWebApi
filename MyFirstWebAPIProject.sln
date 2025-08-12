@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImplementSerilog", "Impleme
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingSerilogToDatabase", "LoggingSerilogToDatabase\LoggingSerilogToDatabase.csproj", "{09F6DC3B-3FA7-467C-B163-1ED8AFB51844}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogDemo", "NLogDemo\NLogDemo.csproj", "{C2B1C275-FE02-4702-A276-6E1251399B39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLogToDatabase", "NLogToDatabase\NLogToDatabase.csproj", "{07451A2B-19D0-41FA-923D-25F51B8C71CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -100,5 +104,13 @@ Global
 		{09F6DC3B-3FA7-467C-B163-1ED8AFB51844}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09F6DC3B-3FA7-467C-B163-1ED8AFB51844}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09F6DC3B-3FA7-467C-B163-1ED8AFB51844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2B1C275-FE02-4702-A276-6E1251399B39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2B1C275-FE02-4702-A276-6E1251399B39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2B1C275-FE02-4702-A276-6E1251399B39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2B1C275-FE02-4702-A276-6E1251399B39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07451A2B-19D0-41FA-923D-25F51B8C71CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07451A2B-19D0-41FA-923D-25F51B8C71CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07451A2B-19D0-41FA-923D-25F51B8C71CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07451A2B-19D0-41FA-923D-25F51B8C71CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,12 @@
+-- Lợi ích của việc ghi log vào cơ sở dữ liệu SQL Server bằng NLog: --
+- Lưu trữ log tập trung: 
+  - Khi ghi log vào SQL Server, tất cả các bản ghi log từ nhiều instance hoặc dịch vụ khác nhau của ứng dụng sẽ được lưu ở một nơi tập trung, giúp việc quản lý và phân tích log trở nên dễ dàng hơn.
+- Dữ liệu có cấu trúc: 
+  - SQL Server lưu trữ log trong các bảng có cấu trúc, cho phép sử dụng câu lệnh SQL để lọc, sắp xếp và phân tích dữ liệu log một cách hiệu quả. 
+  - Nhà phát triển và quản trị viên có thể nhanh chóng lọc log theo mức độ (Error, Warning, Information), khoảng thời gian hoặc các thuộc tính tùy chỉnh để phục vụ debug và báo cáo nhanh hơn.
+- Hiệu năng và khả năng mở rộng: 
+  - SQL Server có khả năng xử lý khối lượng lớn log, phù hợp cho các ứng dụng doanh nghiệp có lưu lượng truy cập cao và nhu cầu logging lớn.
+  - Có thể tận dụng tính năng indexing và partitioning để tăng tốc độ tìm kiếm log.
+- Bảo mật nâng cao: 
+  - SQL Server cung cấp các tính năng bảo mật mạnh mẽ như xác thực (authentication), phân quyền (authorization) và mã hóa (encryption) để đảm bảo log được lưu trữ an toàn. 
+  - So với log dạng file, log lưu trong SQL Server ít bị truy cập trái phép hơn.
