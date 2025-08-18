@@ -1,0 +1,6 @@
+@NCachDemo_HostAddress = http://localhost:5016
+
+GET {{NCachDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

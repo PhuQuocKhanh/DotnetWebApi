@@ -39,6 +39,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchConfiguration"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryCacheDemo", "MemoryCacheDemo\MemoryCacheDemo.csproj", "{8A25E62F-5C86-440B-A89D-E106BFB4F886}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedisDemo", "RedisDemo\RedisDemo.csproj", "{0ADAB647-C8CD-4E87-A555-C6A7730100A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCachDemo", "NCachDemo\NCachDemo.csproj", "{50DB28BE-C33D-4A9A-A669-55D2C52A9CF5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,5 +128,13 @@ Global
 		{8A25E62F-5C86-440B-A89D-E106BFB4F886}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A25E62F-5C86-440B-A89D-E106BFB4F886}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A25E62F-5C86-440B-A89D-E106BFB4F886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADAB647-C8CD-4E87-A555-C6A7730100A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADAB647-C8CD-4E87-A555-C6A7730100A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADAB647-C8CD-4E87-A555-C6A7730100A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADAB647-C8CD-4E87-A555-C6A7730100A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50DB28BE-C33D-4A9A-A669-55D2C52A9CF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50DB28BE-C33D-4A9A-A669-55D2C52A9CF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50DB28BE-C33D-4A9A-A669-55D2C52A9CF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50DB28BE-C33D-4A9A-A669-55D2C52A9CF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
