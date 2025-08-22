@@ -45,6 +45,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NCachDemo", "NCachDemo\NCac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResponseCaching", "ResponseCaching\ResponseCaching.csproj", "{62B53265-D0B3-4F12-A814-5F8457A24D27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentAPIValidation", "FluentAPIValidation\FluentAPIValidation.csproj", "{CACBD4F1-249A-4CCC-BEFA-EC75921B1219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentAPIAsyncValidators", "FluentAPIAsyncValidators\FluentAPIAsyncValidators.csproj", "{FA5FC1A2-A538-4550-81EA-C79E0E21DC56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentAPICustomValidator", "FluentAPICustomValidator\FluentAPICustomValidator.csproj", "{9D46623C-75A0-4512-986B-9C762BD5F9F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,5 +148,17 @@ Global
 		{62B53265-D0B3-4F12-A814-5F8457A24D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62B53265-D0B3-4F12-A814-5F8457A24D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62B53265-D0B3-4F12-A814-5F8457A24D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CACBD4F1-249A-4CCC-BEFA-EC75921B1219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CACBD4F1-249A-4CCC-BEFA-EC75921B1219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CACBD4F1-249A-4CCC-BEFA-EC75921B1219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CACBD4F1-249A-4CCC-BEFA-EC75921B1219}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA5FC1A2-A538-4550-81EA-C79E0E21DC56}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA5FC1A2-A538-4550-81EA-C79E0E21DC56}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA5FC1A2-A538-4550-81EA-C79E0E21DC56}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA5FC1A2-A538-4550-81EA-C79E0E21DC56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D46623C-75A0-4512-986B-9C762BD5F9F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D46623C-75A0-4512-986B-9C762BD5F9F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D46623C-75A0-4512-986B-9C762BD5F9F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D46623C-75A0-4512-986B-9C762BD5F9F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

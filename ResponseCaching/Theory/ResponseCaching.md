@@ -120,10 +120,6 @@ Giả sử client request đến endpoint /api/products:
   - Proxy kiểm tra response cache có còn hạn không.
   - Nếu hợp lệ → trả về ngay từ cache (không gọi đến ASP.NET Core server).
   - Nếu hết hạn → proxy gọi server để refresh hoặc validate cache entry.
-
-Response Caching trong ASP.NET Core Web API giúp cải thiện hiệu năng và khả năng scale.
-
-Dùng [ResponseCache] attribute để định nghĩa quy tắc cache, từ đó client và proxy server biết cách lưu trữ/tái sử dụng response.
-
-Luôn cần test chiến lược cache để đảm bảo cân bằng giữa performance và tính nhất quán dữ liệu.
-
+- Response Caching trong ASP.NET Core Web API giúp cải thiện hiệu năng và khả năng scale.
+- Dùng [ResponseCache] attribute để định nghĩa quy tắc cache, từ đó client và proxy server biết cách lưu trữ/tái sử dụng response.
+- Luôn cần test chiến lược cache để đảm bảo cân bằng giữa performance và tính nhất quán dữ liệu.
