@@ -1,0 +1,6 @@
+@ValidateNestedComplex_HostAddress = http://localhost:5209
+
+GET {{ValidateNestedComplex_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

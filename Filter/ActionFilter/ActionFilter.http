@@ -1,0 +1,6 @@
+@ActionFilter_HostAddress = http://localhost:5215
+
+GET {{ActionFilter_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
