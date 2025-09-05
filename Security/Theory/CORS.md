@@ -1,0 +1,44 @@
+-- What is Cross-Origin Resource Sharing -- 
+- CORS là một giao thức nới lỏng Chính sách Cùng Nguồn gốc trong các điều kiện được kiểm soát. 
+- Nó cho phép các máy chủ chỉ định những nguồn gốc bên ngoài (ứng dụng web) nào được phép truy cập tài nguyên của họ bằng JavaScript hoặc jQuery qua trình duyệt. 
+- Điều này rất cần thiết cho các ứng dụng web hiện đại, nơi API và frontend thường nằm trên các tên miền hoặc cổng khác nhau.
+- Máy chủ bao gồm các HTTP header cụ thể trong phản hồi của mình để chỉ định những nguồn gốc, phương thức HTTP, và header yêu cầu nào được phép.
+- Các header này hướng dẫn trình duyệt cho phép hoặc chặn các yêu cầu chéo nguồn gốc. Dưới đây là các header CORS:
+  - Access-Control-Allow-Origin: Chỉ định các nguồn gốc được phép (ví dụ: https://myclient.com hoặc * cho tất cả các nguồn gốc).
+  - Access-Control-Allow-Methods: Liệt kê các phương thức HTTP được phép (ví dụ: GET, POST, PUT).
+  - Access-Control-Allow-Headers: Liệt kê các header tùy chỉnh được phép mà client có thể gửi.
+  - Access-Control-Max-Age: Chỉ định thời gian tối đa mà trình duyệt có thể cache phản hồi preflight.
+- Bằng cách thiết lập các header này trên máy chủ, CORS cho phép các yêu cầu chéo nguồn gốc an toàn trong khi vẫn bảo vệ khỏi truy cập trái phép.
+
+-- CORS hoạt động như thế nào? --
+- Khi một ứng dụng web client gửi một yêu cầu AJAX đến một Web API được lưu trữ trên một nguồn gốc khác, quy trình bao gồm nhiều bước để đảm bảo yêu cầu an toàn và tuân thủ chính sách CORS của máy chủ.
+  - Bước 1: Yêu cầu Preflight (Kiểm tra ban đầu)
+    - Trước khi gửi yêu cầu thực tế, trình duyệt sẽ gửi một yêu cầu preflight bằng phương thức HTTP OPTIONS đến máy chủ đích. 
+    - Yêu cầu preflight này bao gồm thông tin về phương thức HTTP (ví dụ: GET, POST) và các header (bao gồm cả header tùy chỉnh) của yêu cầu thực tế.
+    - Mục đích: Yêu cầu này hỏi máy chủ xem yêu cầu thực tế có an toàn để gửi đi không.
+    - Phản hồi của máy chủ: Máy chủ đánh giá yêu cầu preflight dựa trên chính sách CORS của nó và phản hồi bằng các header như Access-Control-Allow-Origin, Access-Control-Allow-Methods, và Access-Control-Allow-Headers để cho biết sự cho phép.
+    - Nếu được phép: Trình duyệt tiến hành gửi yêu cầu thực tế.
+    - Nếu bị từ chối: Trình duyệt sẽ chặn yêu cầu.
+  - Bước 2: Yêu cầu thực tế (Actual Request)
+    - Sau khi nhận được phản hồi preflight tích cực, trình duyệt sẽ gửi yêu cầu AJAX thực sự (ví dụ: GET, POST) đến máy chủ.
+    - Máy chủ xử lý yêu cầu này và trả về phản hồi (như dữ liệu JSON hoặc XML).
+  - Bước 3: Lưu cache kết quả Preflight
+    - Để cải thiện hiệu suất, trình duyệt sẽ lưu cache phản hồi của máy chủ đối với yêu cầu preflight trong một khoảng thời gian được xác định bởi header Access-Control-Max-Age.
+    - Trong khoảng thời gian này, các yêu cầu tiếp theo với cùng phương thức và header sẽ bỏ qua bước preflight và gửi thẳng yêu cầu thực tế.
+
+-- Các cấp độ cấu hình CORS -- 
+- Chúng ta có thể cấu hình CORS trong ASP.NET Core ở ba cấp độ khác nhau:
+  - Toàn cục (Globally): (khuyến nghị để có chính sách nhất quán trên tất cả các endpoint)
+  - Cấp độ Controller (Controller-level): (để áp dụng các chính sách khác nhau cho mỗi controller)
+  - Cấp độ Action (Action-level): (để kiểm soát chi tiết hơn trên các endpoint cụ thể)
+
+-- Điều gì xảy ra nếu CORS được kích hoạt ở cả ba cấp? -- 
+- Trong ASP.NET Core, khi CORS được kích hoạt ở cả ba cấp độ: toàn cục (global), controller, và action, thì chính sách có tính đặc thù cao nhất (cấu hình ở cấp gần nhất) sẽ được ưu tiên áp dụng cho mỗi request.
+- Chính sách CORS Toàn cục (Global - app.UseCors):
+  -  Middleware CORS toàn cục được áp dụng đầu tiên cho mọi request. 
+  - Nó thiết lập chính sách CORS ban đầu cho tất cả các request đến, trừ khi bị ghi đè bởi các cấu hình cụ thể hơn.
+- Chính sách CORS cấp Controller ([EnableCors] trên Controller): 
+  - Khi một Controller được gán attribute [EnableCors(“PolicyName”)], chính sách này sẽ ghi đè chính sách CORS toàn cục, áp dụng cho tất cả các action bên trong Controller đó.
+- Chính sách CORS cấp Action ([EnableCors] trên Action): 
+  - Khi một phương thức action có attribute [EnableCors(“PolicyName”)], nó sẽ ghi đè cả chính sách toàn cục và chính sách ở cấp Controller, chỉ áp dụng cho riêng action đó.
+- Nói một cách đơn giản, thứ tự ưu tiên là: Action > Controller > Global.

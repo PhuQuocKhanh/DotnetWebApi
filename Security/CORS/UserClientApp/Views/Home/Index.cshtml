@@ -1,0 +1,242 @@
+﻿@model List<User>
+@{
+    ViewData["Title"] = "Quản lý Người dùng";
+}
+
+<h2 class="text-center my-4">👥 Quản lý Người dùng</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Thông báo Thành công và Lỗi -->
+            <div id="successMessage" class="alert alert-success alert-dismissible fade show" role="alert" style="display:none;">
+                <span id="successText"></span> 😊
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert" style="display:none;">
+                <span id="errorText"></span> 😟
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+            <button id="loadUsers" class="btn btn-primary mb-3"><i class="bi bi-arrow-repeat"></i> 🔄 Tải lại Danh sách</button>
+            <button id="createUserBtn" class="btn btn-success mb-3"><i class="bi bi-person-plus"></i> ➕ Thêm Người dùng Mới</button>
+
+            <div id="createUserForm" class="mb-4 card card-body shadow-sm" style="display: none;">
+                <h4 class="card-title">🆕 Thêm Người dùng Mới</h4>
+                <div class="form-group mb-3">
+                    <label for="createFullName">Họ và Tên</label>
+                    <input type="text" id="createFullName" class="form-control" placeholder="Nhập họ và tên" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="createEmail">Email</label>
+                    <input type="email" id="createEmail" class="form-control" placeholder="Nhập email" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="createPosition">Chức vụ</label>
+                    <input type="text" id="createPosition" class="form-control" placeholder="Nhập chức vụ" />
+                </div>
+                <button id="createUser" class="btn btn-success mt-2"><i class="bi bi-save"></i> 💾 Lưu Người dùng</button>
+                <button id="cancelCreate" class="btn btn-secondary mt-2"><i class="bi bi-x-circle"></i> ❌ Hủy</button>
+            </div>
+
+            <table class="table table-hover table-striped shadow-sm">
+                <thead class="table-dark">
+                    <tr>
+                        <th>🆔 ID</th>
+                        <th>📛 Họ và Tên</th>
+                        <th>📧 Email</th>
+                        <th>💼 Chức vụ</th>
+                        <th>🔧 Hành động</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody">
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Id</td>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.Position</td>
+                            <td>
+                                <button class="btn btn-info editUser" data-id="@user.Id"><i class="bi bi-pencil"></i> ✏️ Sửa</button>
+                                <button class="btn btn-danger deleteUser" data-id="@user.Id"><i class="bi bi-trash"></i> 🗑️ Xóa</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap Modal để chỉnh sửa Người dùng -->
+<div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editUserModalLabel">✏️ Chỉnh sửa Thông tin Người dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="editUserId" />
+                <div class="form-group mb-3">
+                    <label for="editFullName">Họ và Tên</label>
+                    <input type="text" id="editFullName" class="form-control" placeholder="Nhập họ và tên" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="editEmail">Email</label>
+                    <input type="email" id="editEmail" class="form-control" placeholder="Nhập email" />
+                </div>
+                <div class="form-group mb-3">
+                    <label for="editPosition">Chức vụ</label>
+                    <input type="text" id="editPosition" class="form-control" placeholder="Nhập chức vụ" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> ❌ Hủy</button>
+                <button type="button" class="btn btn-primary" id="updateUserBtn"><i class="bi bi-save"></i> 💾 Cập nhật Người dùng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Hiển thị form tạo người dùng
+        $("#createUserBtn").click(function () {
+            $("#createUserForm").show();
+        });
+
+        // Hủy thao tác tạo người dùng
+        $("#cancelCreate").click(function () {
+            $("#createUserForm").hide();
+        });
+
+        // Tải danh sách người dùng
+        $("#loadUsers").click(function () {
+            loadUsers();
+        });
+
+        // Hàm để tải danh sách người dùng
+        function loadUsers() {
+            $.ajax({
+                url: "https://localhost:7152/api/user/getallusers",
+                type: "GET",
+                success: function (data) {
+                    var rows = "";
+                    data.forEach(function (user) {
+                        rows += "<tr><td>" + user.Id + "</td><td>" + user.FullName + "</td><td>" + user.Email + "</td><td>" + user.Position + "</td><td><button class='btn btn-info editUser' data-id='" + user.Id + "'><i class='bi bi-pencil'></i> ✏️ Sửa</button><button class='btn btn-danger deleteUser' data-id='" + user.Id + "'><i class='bi bi-trash'></i> 🗑️ Xóa</button></td></tr>";
+                    });
+                    $("#userTableBody").html(rows);
+                },
+                error: function (xhr, status, error) {
+                    showErrorMessage("⚠️ Oops! Đã xảy ra lỗi khi tải danh sách người dùng. Vui lòng thử lại.");
+                }
+            });
+        }
+
+        // Tạo người dùng
+        $("#createUser").click(function () {
+            var user = {
+                FullName: $("#createFullName").val(),
+                Email: $("#createEmail").val(),
+                Position: $("#createPosition").val()
+            };
+            $.ajax({
+                url: "https://localhost:7152/api/user/adduser",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(user),
+                success: function () {
+                    showSuccessMessage("🎉 Đã tạo người dùng mới thành công!");
+                    loadUsers(); // Tải lại danh sách người dùng
+                    $("#createUserForm").hide();
+                },
+                error: function (xhr, status, error) {
+                    showErrorMessage("⚠️ Oops! Đã xảy ra lỗi khi tạo người dùng. Vui lòng thử lại.");
+                }
+            });
+        });
+
+        // Sửa người dùng
+        $(document).on("click", ".editUser", function () {
+            var userId = $(this).data("id");
+            $.ajax({
+                url: "https://localhost:7152/api/user/getuserbyid/" + userId,
+                type: "GET",
+                success: function (user) {
+                    $("#editUserId").val(user.Id);
+                    $("#editFullName").val(user.FullName);
+                    $("#editEmail").val(user.Email);
+                    $("#editPosition").val(user.Position);
+                    $("#editUserModal").modal("show");
+                },
+                error: function (xhr, status, error) {
+                    showErrorMessage("⚠️ Oops! Đã xảy ra lỗi khi tải thông tin người dùng. Vui lòng thử lại.");
+                }
+            });
+        });
+
+        // Cập nhật người dùng
+        $("#updateUserBtn").click(function () {
+            var user = {
+                Id: $("#editUserId").val(),
+                FullName: $("#editFullName").val(),
+                Email: $("#editEmail").val(),
+                Position: $("#editPosition").val()
+            };
+            $.ajax({
+                url: "https://localhost:7152/api/user/updateuser/" + user.Id,
+                type: "PUT",
+                contentType: "application/json",
+                data: JSON.stringify(user),
+                success: function () {
+                    showSuccessMessage("🎉 Đã cập nhật thông tin người dùng thành công!");
+                    $("#editUserModal").modal("hide");
+                    loadUsers(); // Tải lại để lấy danh sách đã cập nhật
+                },
+                error: function (xhr, status, error) {
+                    showErrorMessage("⚠️ Oops! Đã xảy ra lỗi khi cập nhật người dùng. Vui lòng thử lại.");
+                }
+            });
+        });
+
+        // Xóa người dùng
+        $(document).on("click", ".deleteUser", function () {
+            var userId = $(this).data("id");
+            if (confirm("❗ Bạn có chắc chắn muốn xóa người dùng này không? Hành động này không thể hoàn tác.")) {
+                $.ajax({
+                    url: "https://localhost:7152/api/user/deleteuser/" + userId,
+                    type: "DELETE",
+                    success: function () {
+                        showSuccessMessage("🗑️ Đã xóa người dùng thành công.");
+                        loadUsers(); // Tải lại để lấy danh sách đã cập nhật
+                    },
+                    error: function (xhr, status, error) {
+                        showErrorMessage("⚠️ Oops! Đã xảy ra lỗi khi xóa người dùng. Vui lòng thử lại.");
+                    }
+                });
+            }
+        });
+
+        // Hàm hiển thị thông báo thành công
+        function showSuccessMessage(message) {
+            $("#successText").text(message);
+            $("#successMessage").show();
+            setTimeout(function () {
+                $("#successMessage").fadeOut("slow");
+            }, 8000);
+        }
+
+        // Hàm hiển thị thông báo lỗi
+        function showErrorMessage(message) {
+            $("#errorText").text(message);
+            $("#errorMessage").show();
+            setTimeout(function () {
+                $("#errorMessage").fadeOut("slow");
+            }, 8000);
+        }
+    });
+</script>
