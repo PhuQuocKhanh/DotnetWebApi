@@ -1,0 +1,6 @@
+-- Vì sao nên dùng IHttpClientFactory trong các ứng dụng ASP.NET Core hiện đại? -- 
+- Khi bạn khởi tạo trực tiếp HttpClient trong code (ví dụ: dùng new HttpClient() trong Controller hoặc Service), bạn sẽ gặp vấn đề nghiêm trọng, đặc biệt trong ứng dụng lưu lượng cao hoặc chạy lâu dài.
+
+- Vấn đề chính là socket exhaustion (cạn kiệt socket). Mỗi lần bạn tạo mới HttpClient, nó sẽ mở một socket kết nối. Nếu không được dispose đúng cách, bạn sẽ nhanh chóng hết socket khả dụng. Ngay cả khi đã dispose, việc tạo liên tục cũng khiến các kết nối TCP rơi vào trạng thái TIME_WAIT, vẫn chiếm tài nguyên. Điều này làm giảm hiệu năng, gây lỗi khó lường và khiến ứng dụng thiếu ổn định.
+
+- IHttpClientFactory ra đời trong ASP.NET Core để giải quyết vấn đề này bằng cách cung cấp một cơ chế quản lý tập trung việc tạo và tái sử dụng HttpClient. Thay vì mỗi lần new, bạn gọi client từ factory — factory sẽ quản lý kết nối, pool hợp lý, ngăn ngừa socket exhaustion. Ngoài ra, bạn dễ dàng cấu hình default headers, timeout, logging, retry policy… ở một chỗ.

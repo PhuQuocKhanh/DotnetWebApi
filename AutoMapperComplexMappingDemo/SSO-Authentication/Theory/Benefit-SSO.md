@@ -1,0 +1,14 @@
+-- Các lợi ích chính -- 
+- Tăng cường trải nghiệm người dùng (UX): 
+  - SSO loại bỏ nhu cầu đăng nhập nhiều lần, giảm "mệt mỏi mật khẩu" (password fatigue) và lỗi đăng nhập, giúp người dùng có trải nghiệm liền mạch hơn.
+- Cải thiện bảo mật: 
+  - Việc tập trung hóa xác thực cho phép áp dụng các biện pháp kiểm soát bảo mật mạnh mẽ như Xác thực đa yếu tố (MFA) và các chính sách mật khẩu nhất quán. 
+  - Nó giảm rủi ro tái sử dụng mật khẩu và cho phép thu hồi quyền truy cập nhanh chóng khi cần.
+- Tăng năng suất:
+  - Người dùng có thể chuyển đổi nhanh chóng giữa các ứng dụng mà không cần đăng nhập lại, giúp tăng hiệu quả công việc, đặc biệt trong các quy trình làm việc liên quan đến nhiều ứng dụng.
+- Giảm thiểu "mệt mỏi mật khẩu": 
+  - Việc duy trì một bộ thông tin đăng nhập duy nhất khuyến khích người dùng sử dụng mật khẩu mạnh hơn và giảm nguy cơ dùng mật khẩu yếu hoặc lặp lại.
+- Đơn giản hóa quản lý truy cập:
+  - Quản trị viên có được quyền kiểm soát tập trung đối với quyền truy cập của người dùng, cho phép cập nhật hoặc thu hồi quyền ngay lập tức trên tất cả các ứng dụng.
+- Khả năng mở rộng (Scalability): 
+  - SSO cho phép tích hợp liền mạch các ứng dụng mới vào hệ thống mà không làm tăng độ phức tạp trong việc quản lý người dùng.

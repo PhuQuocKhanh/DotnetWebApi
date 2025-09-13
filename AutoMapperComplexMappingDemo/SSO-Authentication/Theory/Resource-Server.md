@@ -1,0 +1,6 @@
+- Resource Server là một API lưu trữ dữ liệu hoặc tài nguyên cần được bảo vệ, đảm bảo rằng chỉ những client đã được xác thực (authenticated) và ủy quyền (authorized) mới có thể truy cập. 
+- Trong các ứng dụng web hiện đại, việc bảo vệ này thường được thực thi bằng JSON Web Tokens (JWTs) — một cách an toàn và gọn nhẹ để truyền thông tin xác thực giữa các bên.
+- Trong ví dụ này, chúng ta sẽ xây dựng một ASP.NET Core Web API Resource Server đơn giản để minh họa cách bảo vệ API endpoint bằng JWT Authentication. Ứng dụng sẽ có 2 loại endpoint:
+  - Public Endpoint: Bất kỳ ai cũng có thể truy cập mà không cần xác thực.
+  - Protected Endpoint: Chỉ có thể truy cập khi gửi kèm JWT token hợp lệ, đảm bảo chỉ những client được ủy quyền mới vào được.
+- Mục tiêu là giúp bạn hiểu cách tích hợp JWT Authentication Middleware vào ASP.NET Core Web API để bảo vệ API một cách hiệu quả.
