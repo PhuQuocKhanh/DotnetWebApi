@@ -1,0 +1,11 @@
+-- Query String Web API Versioning là gì? -- 
+- Query String Web API Versioning là một phương pháp quản lý nhiều phiên bản của API bằng cách chỉ định số phiên bản trong query string của URL request. 
+- Cách tiếp cận này thường được sử dụng khi API cần duy trì nhiều phiên bản song song để hỗ trợ các client khác nhau hoặc đảm bảo khả năng tương thích ngược.
+
+-- Cách hoạt động của Query String Web API Versioning --
+- Phiên bản API mà client muốn sử dụng sẽ được truyền vào như một tham số trong query string của URL. Ví dụ:
+  - https://api.example.com/products?version=1.0
+- sẽ truy cập vào API Products phiên bản 1.0.
+- Ở phía server, logic sẽ phân tích query string để xác định phiên bản API mà client yêu cầu. 
+- Dựa trên thông tin này, server sẽ quyết định thực thi đoạn code tương ứng với phiên bản đó. 
+- Phương pháp này giúp client có thể chỉ rõ phiên bản mình cần, đồng thời làm cho việc sử dụng API minh bạch hơn.

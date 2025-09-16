@@ -1,0 +1,13 @@
+-- Khi nào nên dùng URL Path Versioning trong ASP.NET Core Web API? -- 
+- Chúng ta nên dùng URL Path Versioning trong các trường hợp sau:
+  - Khi muốn version API rõ ràng và hiển thị trực tiếp trên URL:
+    - Với URL path versioning, số version là một phần của route, ví dụ:
+    - /api/v1/products
+    - /api/v2/products
+      - Điều này giúp developer và người dùng API dễ dàng nhận biết họ đang gọi version nào, chỉ cần nhìn vào URL. 
+      - Nó tăng tính minh bạch, dễ debug, và giảm nhầm lẫn trong tài liệu.
+  - Khi xây dựng public API hoặc API cho bên thứ ba:
+    - Public API thường dùng URL path versioning vì dễ mô tả trong tài liệu, ví dụ code, và onboarding guide.
+    - Các consumer bên ngoài cũng quen với cách này vì đây là chuẩn phổ biến trong ngành RESTful API.
+    - Nhiều nền tảng lớn như Google, Microsoft, Facebook, Twitter đều áp dụng.
+- 👉 Đây là phương pháp versioning phổ biến nhất cho public API, enterprise API, hoặc khi API cần ổn định lâu dài, hỗ trợ nhiều version song song, và dễ quản lý contract.

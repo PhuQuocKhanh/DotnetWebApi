@@ -1,0 +1,38 @@
+-- ApiDescription (apiDesc) là gì? -- 
+- Lớp ApiDescription đại diện cho metadata về một endpoint API (action method) trong ứng dụng ASP.NET Core. 
+- Swagger sử dụng các đối tượng ApiDescription để xây dựng tài liệu API. Nó mô tả các thông tin như:
+  - HTTP method (GET, POST, …)
+  - Route template (mẫu URL)
+  - Thông tin controller và action method
+  - Các phiên bản API được hỗ trợ (nếu bật versioning)
+  - Parameters, request body, response types, …
+
+-- Khi nào nên dùng Query String Versioning trong ASP.NET Core Web API? -- 
+- Chúng ta nên sử dụng Query String Versioning trong các trường hợp sau:
+  - Khi muốn giữ URL gọn gàng và không nhúng version trực tiếp vào đường dẫn:
+  - Thay vì /api/v1/products, ta chỉ cần /api/products và thêm version ở query string.
+  - Ví dụ: /api/products?api-version=2.0.
+  - Cách này giúp endpoint path thống nhất, dễ đọc, dễ nhớ.
+- Khi cần test hoặc debug nhanh:
+  - Query string có thể thay đổi trực tiếp trên browser hoặc công cụ như Postman.
+  - Chỉ cần đổi ?api-version=1.0 thành ?api-version=2.0 để gọi version khác, không phải nhớ endpoint mới.
+- Khi cần hỗ trợ backward compatibility:
+  - Nhiều version API có thể cùng tồn tại trên cùng một route base.
+  - Client cũ gọi version cũ, client mới gọi version mới → giữ được compatibility mà không phải tạo thêm route structure mới.
+  - Trong môi trường phát triển hoặc nội bộ (internal API):
+  - Khi tốc độ phát triển, test và sự linh hoạt quan trọng hơn việc tuân thủ chặt chẽ chuẩn RESTful.
+  - Dễ dàng chuyển version nhanh chóng, hỗ trợ debug và tích hợp.
+- 👉 Nói cách khác, Query String Versioning dễ cấu hình, nhanh gọn, phù hợp cho môi trường dev hoặc API nội bộ.
+
+-- URL Path Versioning trong ASP.NET Core Web API -- 
+- URL Path Versioning là cách nhúng thông tin version trực tiếp vào route path. 
+- Thay vì query string hoặc header, client sẽ gọi endpoint kèm version:
+  - GET /api/v1/products → version 1.0
+  - GET /api/v2/products → version 2.0
+- Đây là cách phổ biến cho public APIs, vì version hiển thị rõ ràng trong URL, vừa dễ hiểu vừa tuân thủ RESTful. 
+- Nhược điểm: mỗi lần ra version mới thì URL cũng phải thay đổi.
+
+-- Cơ chế hoạt động của URL Path Versioning -- 
+- Khi client gửi request /api/v1/products, ASP.NET Core routing sẽ phân giải đường dẫn để định tuyến đến controller/action tương ứng với version 1.
+- Tương tự, /api/v2/products sẽ map đến controller/action version 2.
+- Để làm được điều này, ta cấu hình API versioning để đọc version từ URL segment và thêm placeholder version trong [Route] attribute.
